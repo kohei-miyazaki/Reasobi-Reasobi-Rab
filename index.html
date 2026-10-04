@@ -153,23 +153,44 @@ h1,h2,h3{text-wrap:balance;word-break:auto-phrase}
 .toy h3 span{font-family:var(--kid);font-size:14px;font-weight:700;color:var(--kid-muted)}
 .toy p{font-size:14px;color:var(--kid-muted);line-height:1.7}
 
-.phone{justify-self:center;width:min(300px,100%);aspect-ratio:9/18.5;max-width:100%;border-radius:44px;background:#1B1230;padding:12px;box-shadow:0 40px 80px -30px rgba(80,30,90,.45),0 0 0 2px #2E2147 inset;position:relative}
-.phone .screen{height:100%;border-radius:34px;background:linear-gradient(180deg,#FFF4D6,#FFE1EA);overflow:hidden;display:flex;flex-direction:column;gap:12px;padding:30px 18px 18px;font-family:var(--kid);color:var(--kid-ink)}
-.phone .notch{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:84px;height:22px;border-radius:12px;background:#1B1230}
-.phone .hi{font-weight:800;font-size:18px;display:flex;justify-content:space-between;align-items:center}
-.phone .hi span{font-size:12px;background:#fff;padding:3px 10px;border-radius:999px;color:#C77800}
-.ring{display:grid;place-items:center;position:relative;margin-block:4px}
-.ring svg{width:128px;height:128px}
-.ring div{position:absolute;text-align:center;line-height:1.2}
-.ring b{font-family:var(--en);font-size:28px;font-weight:800;display:block}
-.ring small{font-size:11px;color:var(--kid-muted)}
-.missions{display:grid;gap:7px;font-size:13px;font-weight:700}
-.missions div{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:8px 10px}
-.missions i{font-style:normal;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;flex:none}
-.missions .done i{background:#3DDBB0;color:#fff}
-.missions .todo i{border:2px dashed #FFA51F}
-.goal{margin-top:auto;background:var(--kid-ink);color:#FFF4D6;border-radius:16px;padding:10px 12px;font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
-.goal b{font-family:var(--en);color:#FFC861}
+.phone{justify-self:center;width:min(330px,100%);max-width:100%;border-radius:48px;background:#1B1230;padding:11px;box-shadow:0 40px 80px -30px rgba(80,30,90,.45),0 0 0 2px #2E2147 inset;position:relative}
+.phone .notch{position:absolute;top:19px;left:50%;transform:translateX(-50%);width:96px;height:26px;border-radius:14px;background:#1B1230;z-index:2}
+.phone .screen{border-radius:38px;background:linear-gradient(180deg,#FFF9F1,#FFF4E6 60%,#FDF0E4);overflow:hidden;display:flex;flex-direction:column;gap:10px;padding:46px 14px 14px;font-family:var(--kid);color:#2A2340}
+.app-top{display:flex;justify-content:space-between;align-items:center}
+.app-logo{display:flex;align-items:center;gap:6px;font-family:var(--en);font-weight:600;font-size:15px;letter-spacing:0}
+.app-logo svg{width:22px;height:22px}
+.app-icons{display:flex;gap:8px;align-items:center}
+.app-icons .bell{position:relative;width:34px;height:34px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 3px 8px -4px rgba(60,40,80,.35)}
+.app-icons .bell svg{width:16px;height:16px}
+.app-icons .bell i{position:absolute;top:6px;right:7px;width:7px;height:7px;border-radius:50%;background:#FF5C6C}
+.app-icons .avatar{width:38px;height:38px;border-radius:50%;background:#E6F2FF;overflow:hidden;display:grid;place-items:center;box-shadow:0 3px 8px -4px rgba(60,40,80,.35)}
+.app-icons .avatar svg{width:34px;height:34px}
+.greet{display:grid;gap:2px;padding-left:2px}
+.greet b{font-size:24px;font-weight:800;line-height:1.3}
+.greet span{font-size:12px;font-weight:700;color:#4B4462;line-height:1.5}
+.adv{position:relative;height:170px;margin-inline:-14px;margin-top:-34px}
+.adv .scene{position:absolute;inset:0;width:100%;height:100%}
+.adv .ring{position:absolute;left:50%;top:6px;transform:translateX(-58%);width:150px;height:150px}
+.adv .ring svg{width:100%;height:100%;display:block}
+.adv .ring div{position:absolute;inset:0;display:grid;place-content:center;text-align:center;line-height:1.15}
+.adv .ring b{font-family:var(--en);font-size:32px;font-weight:800;color:#2A2340}
+.adv .ring b small{font-size:20px}
+.adv .ring span{font-size:10px;font-weight:700;color:#4B4462}
+.adv .buddy{position:absolute;right:8px;top:58px;width:76px;height:88px}
+.missions{display:grid;gap:7px;font-size:12.5px;font-weight:700}
+.missions .row{display:grid;grid-template-columns:40px 1fr 24px;gap:10px;align-items:center;background:#fff;border-radius:16px;padding:7px 10px 7px 7px;box-shadow:0 4px 10px -8px rgba(60,40,80,.4)}
+.missions .ic{width:40px;height:40px;border-radius:50%;display:grid;place-items:center}
+.missions .ic svg{width:28px;height:28px}
+.missions .st{width:24px;height:24px;display:grid;place-items:center}
+.missions .st.ok{border-radius:50%;background:#5DD3A0}
+.missions .st.ok svg{width:14px;height:14px}
+.missions .st.wait{border-radius:50%;border:2.5px dashed #FFB13D}
+.missions .st.go svg{width:12px;height:12px}
+.goal{position:relative;overflow:hidden;border-radius:18px;background:linear-gradient(135deg,#2B2A55,#3A3570);color:#fff;padding:12px 14px;min-height:84px;display:grid;align-content:center}
+.goal p{position:relative;z-index:1;font-size:12px;font-weight:700;line-height:1.2}
+.goal p b{display:inline-block;font-family:var(--en);font-size:38px;font-weight:800;color:#FFC233;line-height:1;margin-right:6px;vertical-align:-6px}
+.goal p span{font-size:16px;font-weight:800}
+.goal svg{position:absolute;right:0;bottom:0;width:62%;height:100%}
 .imgnote{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--kid-muted);text-align:center;margin-top:12px}
 
 .journey{margin-top:clamp(56px,7vw,88px);position:relative}
@@ -433,24 +454,66 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;pa
         </div>
 
         <div>
-          <div class="phone" role="img" aria-label="Reasobi One のアプリ画面イメージ。今日の運動72%、ミッション3つ中2つ達成">
+          <div class="phone" role="img" aria-label="Reasobi One のアプリ画面イメージ。おはよう！きょうの ぼうけん 72%。ミッション4つのうち2つ達成。がっこうまで あと3ぼうけん">
             <span class="notch"></span>
-            <div class="screen">
-              <div class="hi">おはよう！<span>★ 12</span></div>
-              <div class="ring">
-                <svg viewBox="0 0 120 120" aria-hidden="true">
-                  <circle cx="60" cy="60" r="50" fill="none" stroke="#fff" stroke-width="12"/>
-                  <circle cx="60" cy="60" r="50" fill="none" stroke="url(#ring-g)" stroke-width="12" stroke-linecap="round" stroke-dasharray="226 314" transform="rotate(-90 60 60)"/>
-                  <defs><linearGradient id="ring-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFA51F"/><stop offset="1" stop-color="#FF5C86"/></linearGradient></defs>
+            <div class="screen" aria-hidden="true">
+              <div class="app-top">
+                <span class="app-logo"><svg viewBox="0 0 20 20"><circle cx="6" cy="6" r="4.2" fill="#FFC233"/><circle cx="14.2" cy="5.6" r="4.2" fill="#FF6B6B"/><circle cx="5.6" cy="14.2" r="4.2" fill="#4D8CFF"/><circle cx="14" cy="14" r="4.2" fill="#3DDBB0"/></svg>Reasobi One</span>
+                <span class="app-icons">
+                  <span class="bell"><svg viewBox="0 0 24 24"><path d="M12 3a6 6 0 0 0-6 6v4l-2 3h16l-2-3V9a6 6 0 0 0-6-6z" fill="#2A2340"/><circle cx="12" cy="19.5" r="2.2" fill="#2A2340"/></svg><i></i></span>
+                  <span class="avatar"><svg viewBox="0 0 40 40"><circle cx="11" cy="12" r="5.5" fill="#B57A4A"/><circle cx="29" cy="12" r="5.5" fill="#B57A4A"/><circle cx="11" cy="12" r="2.6" fill="#E9B98D"/><circle cx="29" cy="12" r="2.6" fill="#E9B98D"/><circle cx="20" cy="22" r="13" fill="#C98B5B"/><ellipse cx="20" cy="26" rx="6.5" ry="5" fill="#F1D3B3"/><circle cx="15" cy="20" r="1.8" fill="#2A2340"/><circle cx="25" cy="20" r="1.8" fill="#2A2340"/><ellipse cx="20" cy="24.5" rx="2.2" ry="1.6" fill="#2A2340"/><circle cx="11.5" cy="25" r="2.2" fill="#FF9AA8" opacity=".7"/><circle cx="28.5" cy="25" r="2.2" fill="#FF9AA8" opacity=".7"/></svg></span>
+                </span>
+              </div>
+              <div class="greet"><b>おはよう！</b><span>きょうも たのしく<br>ぼうけん しよう！</span></div>
+              <div class="adv">
+                <svg class="scene" viewBox="0 0 330 170" preserveAspectRatio="xMidYMax slice">
+                  <circle cx="300" cy="34" r="13" fill="#FFD34D"/>
+                  <g stroke="#FFC233" stroke-width="3" stroke-linecap="round"><path d="M300 13v-6M300 55v6M279 34h-6M321 34h6M285 19l-4-4M315 49l4 4M315 19l4-4M285 49l-4 4"/></g>
+                  <g fill="#fff"><ellipse cx="44" cy="88" rx="22" ry="9"/><ellipse cx="58" cy="82" rx="14" ry="10"/><ellipse cx="300" cy="110" rx="18" ry="7"/></g>
+                  <ellipse cx="60" cy="182" rx="150" ry="46" fill="#CDEBC3"/>
+                  <ellipse cx="290" cy="186" rx="140" ry="40" fill="#D8F0CF"/>
+                  <g><rect x="27" y="118" width="4" height="22" rx="2" fill="#9C7A5B"/><ellipse cx="29" cy="112" rx="11" ry="16" fill="#8FD18A"/><rect x="50" y="128" width="3.5" height="16" rx="2" fill="#9C7A5B"/><ellipse cx="52" cy="122" rx="8" ry="12" fill="#A6DB9C"/></g>
+                  <g fill="#F7C25A"><ellipse cx="300" cy="150" rx="7" ry="3"/><ellipse cx="80" cy="160" rx="6" ry="2.5"/></g>
                 </svg>
-                <div><b>72%</b><small>きょうの うごき</small></div>
+                <div class="ring">
+                  <svg viewBox="0 0 150 150"><defs><linearGradient id="adv-g" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#FFA94D"/><stop offset="1" stop-color="#FF6B8B"/></linearGradient></defs>
+                    <circle cx="75" cy="75" r="60" fill="#fff"/>
+                    <circle cx="75" cy="75" r="60" fill="none" stroke="#EFE6DD" stroke-width="15"/>
+                    <circle cx="75" cy="75" r="60" fill="none" stroke="url(#adv-g)" stroke-width="15" stroke-linecap="round" stroke-dasharray="271 377" transform="rotate(-90 75 75)"/>
+                  </svg>
+                  <div><b>72<small>%</small></b><span>きょうの ぼうけん</span></div>
+                </div>
+                <svg class="buddy" viewBox="0 0 84 96">
+                  <g stroke="#FF9A3D" stroke-width="3" stroke-linecap="round"><path d="M56 10l4-8M66 16l7-5M70 27h8"/></g>
+                  <path d="M38 22v-8" stroke="#2A2340" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="38" cy="11" r="6" fill="#FFB0A0"/>
+                  <path d="M64 40q12-8 12-22" fill="none" stroke="#2A2340" stroke-width="3" stroke-linecap="round"/>
+                  <circle cx="76" cy="17" r="5" fill="#fff" stroke="#2A2340" stroke-width="2.5"/>
+                  <path d="M10 26q28-12 56 6q10 30-6 50q-24 14-48 2q-20-24-2-58z" fill="#fff" stroke="#2A2340" stroke-width="2.5"/>
+                  <circle cx="28" cy="50" r="3.4" fill="#2A2340"/><circle cx="48" cy="50" r="3.4" fill="#2A2340"/>
+                  <path d="M33 58q5 6 10 0" fill="#FF6B6B" stroke="#2A2340" stroke-width="2" stroke-linejoin="round"/>
+                  <ellipse cx="21" cy="58" rx="4.5" ry="3" fill="#FFB3BE"/><ellipse cx="56" cy="58" rx="4.5" ry="3" fill="#FFB3BE"/>
+                  <path d="M8 66q-8 4-6 12" fill="none" stroke="#2A2340" stroke-width="3" stroke-linecap="round"/>
+                </svg>
               </div>
               <div class="missions">
-                <div class="done"><i>✓</i>ベッドで うでまわし 10かい</div>
-                <div class="done"><i>✓</i>VRで うみを たんけん</div>
-                <div class="todo"><i></i>プレイルームで ボールあそび</div>
+                <div class="row"><span class="ic" style="background:#FFEFC2"><svg viewBox="0 0 28 28"><circle cx="14" cy="8" r="4.5" fill="#F29A2E"/><path d="M9 14h10v9H9z" fill="#F7B54A"/><path d="M9 15L4 8M19 15l5-7" stroke="#F29A2E" stroke-width="3" stroke-linecap="round"/></svg></span><span>ベッドで うでまわし 10かい</span><span class="st ok"><svg viewBox="0 0 14 14"><path d="M3 7.5l2.6 2.6L11 4.5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                <div class="row"><span class="ic" style="background:#D6F5EA"><svg viewBox="0 0 28 28"><rect x="3" y="9" width="22" height="12" rx="6" fill="#3DBF9A"/><circle cx="10" cy="15" r="3.4" fill="#fff"/><circle cx="18" cy="15" r="3.4" fill="#fff"/><circle cx="10" cy="15" r="1.5" fill="#2A2340"/><circle cx="18" cy="15" r="1.5" fill="#2A2340"/><path d="M6 10q8-7 16 0" fill="none" stroke="#2A2340" stroke-width="1.6"/></svg></span><span>VRで うみを たんけん</span><span class="st ok"><svg viewBox="0 0 14 14"><path d="M3 7.5l2.6 2.6L11 4.5" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
+                <div class="row"><span class="ic" style="background:#FFE0E3"><svg viewBox="0 0 28 28"><circle cx="14" cy="14" r="10" fill="#FF7A7A"/><path d="M5 11q9 5 18 0M6.5 19q7.5-4 15 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg></span><span>プレイルームで ボールあそび</span><span class="st wait"></span></div>
+                <div class="row"><span class="ic" style="background:#DCEBFF"><svg viewBox="0 0 28 28"><rect x="6" y="4" width="15" height="20" rx="2.5" fill="#4D8CFF"/><rect x="9" y="8" width="9" height="2" rx="1" fill="#fff"/><rect x="9" y="12" width="7" height="2" rx="1" fill="#fff"/><path d="M17 22l7-9 2.5 2-7 9-3.5 1z" fill="#FFB13D"/></svg></span><span>きょうの きろくを のこす</span><span class="st go"><svg viewBox="0 0 12 12"><path d="M4 2l4 4-4 4" fill="none" stroke="#9A93AE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div>
               </div>
-              <div class="goal">がっこうまで あと<b>3</b>ぼうけん</div>
+              <div class="goal">
+                <svg viewBox="0 0 190 84" preserveAspectRatio="xMaxYMax meet">
+                  <ellipse cx="120" cy="96" rx="110" ry="34" fill="#7FC46E"/>
+                  <ellipse cx="190" cy="92" rx="70" ry="26" fill="#94D47F"/>
+                  <path d="M96 84q20-18 46-26" fill="none" stroke="#F3DDB0" stroke-width="6" stroke-linecap="round"/>
+                  <rect x="128" y="36" width="40" height="24" fill="#FFF3DA"/><path d="M124 38l24-14 24 14z" fill="#E86B5A"/>
+                  <rect x="144" y="46" width="8" height="14" rx="1.5" fill="#8C5A3C"/><rect x="132" y="42" width="7" height="6" rx="1" fill="#7FB8FF"/><rect x="157" y="42" width="7" height="6" rx="1" fill="#7FB8FF"/>
+                  <path d="M148 24V10" stroke="#fff" stroke-width="1.5"/><path d="M148 10l9 3-9 3z" fill="#FFC233"/>
+                  <g><rect x="106" y="50" width="3" height="12" rx="1.5" fill="#6B4B33"/><ellipse cx="107.5" cy="46" rx="6" ry="9" fill="#5FB35C"/><rect x="178" y="48" width="3" height="12" rx="1.5" fill="#6B4B33"/><ellipse cx="179.5" cy="44" rx="6" ry="9" fill="#5FB35C"/></g>
+                </svg>
+                <p>がっこうまで あと<br><b>3</b><span>ぼうけん</span></p>
+              </div>
             </div>
           </div>
           <p class="imgnote">REASOBI ONE ／ 画面イメージ</p>
