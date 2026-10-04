@@ -813,8 +813,8 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;pa
   function fill(k){ sel.innerHTML = KINDS[k].map(s => `<option>${s}</option>`).join(''); }
   document.querySelectorAll('input[name="aud"]').forEach(r => r.addEventListener('change', () => fill(r.value)));
   fill('kid');
-  /* 送信：FormSubmit（https://formsubmit.co）経由で下記アドレスにメールで届く */
-  const TO = 'koheiatarou0127@gmail.com';
+  /* 送信：FormSubmit（https://formsubmit.co）経由で、登録済みのメールアドレスに届く（アドレスはFormSubmitの英数字IDで隠している） */
+  const FORM_ID = '0cf84c285943c89a225ff589bf67b53c';
   const form = document.getElementById('contact-form'), btn = document.getElementById('c-send'), out = document.getElementById('c-done');
   function show(kind, html){ out.className = 'notice ' + kind; out.innerHTML = html; out.hidden = false; }
   form.addEventListener('submit', async e => {
@@ -829,7 +829,7 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;pa
     });
     btn.disabled = true; btn.textContent = '送信中…';
     try {
-      const res = await fetch('https://formsubmit.co/ajax/' + TO, {
+      const res = await fetch('https://formsubmit.co/ajax/' + FORM_ID, {
         method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload)
       });
       const j = await res.json().catch(() => ({}));
@@ -837,13 +837,7 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;pa
       form.reset(); fill('kid');
       show('ok', '<b>送信しました。</b><span>内容を確認し、ご入力のメールアドレスへご連絡します。</span>');
     } catch (err) {
-      show('err', '<b>送信できませんでした。入力内容はそのまま残っています。</b><span>時間をおいてもう一度お試しいただくか、下記アドレスへ直接メールでお送りください。</span>'
-        + '<span class="addr"><code>' + TO + '</code><button type="button" id="c-copy">コピー</button></span>');
-      const cp = document.getElementById('c-copy');
-      cp.addEventListener('click', () => {
-        navigator.clipboard.writeText(TO).then(() => { cp.textContent = 'コピーしました'; })
-          .catch(() => { const r = document.createRange(); r.selectNodeContents(out.querySelector('code')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
-      });
+      show('err', '<b>送信できませんでした。入力内容はそのまま残っています。</b><span>通信状況をご確認のうえ、時間をおいてもう一度「送信する」を押してください。</span>');
     } finally {
       btn.disabled = false; btn.textContent = '送信する';
     }
