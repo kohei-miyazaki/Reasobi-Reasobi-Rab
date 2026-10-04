@@ -250,6 +250,7 @@ h1,h2,h3{text-wrap:balance;word-break:auto-phrase}
 
 /* ===== METHOD ===== */
 .method{background:var(--void)}
+.nw{white-space:nowrap}
 .method-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
 @media (max-width:900px){.method-grid{grid-template-columns:1fr}}
 .venn{width:100%;max-width:480px;justify-self:center;height:auto;overflow:visible}
@@ -509,13 +510,13 @@ footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;pa
   <!-- ===== METHOD ===== -->
   <section class="method sec" id="method" aria-labelledby="method-title">
     <div class="in">
+      <div class="head">
+        <span class="chip" style="background:rgba(155,140,255,.12);color:var(--violet)">HOW WE WORK</span>
+        <h2 id="method-title"><span class="nw">医療現場 ×</span> <span class="nw">テクノロジー ×</span> <span class="nw">実装</span></h2>
+        <p>医師が「あったらいい」と言うだけの会社でも、エンジニアが医療を想像して作る会社でもありません。現場で課題を見つけ、自分たちで作り、現場で試し、社会に届けます。</p>
+      </div>
       <div class="method-grid">
         <div>
-          <div class="head">
-            <span class="chip" style="background:rgba(155,140,255,.12);color:var(--violet)">HOW WE WORK</span>
-            <h2 id="method-title">医療現場 × テクノロジー × 実装</h2>
-            <p>医師が「あったらいい」と言うだけの会社でも、エンジニアが医療を想像して作る会社でもありません。現場で課題を見つけ、自分たちで作り、現場で試し、社会に届けます。</p>
-          </div>
           <div class="pillars">
             <div class="pillar"><span class="mono">Clinical Insight</span><h3>医療現場</h3><p>臨床にいる医療者として、毎日の現場から本当の課題を見つけます。</p></div>
             <div class="pillar"><span class="mono">Technology</span><h3>テクノロジー</h3><p>AI、VR、Webアプリ。課題に合う技術を選び、自分たちの手で作ります。</p></div>
