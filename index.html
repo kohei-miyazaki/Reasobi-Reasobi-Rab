@@ -1,0 +1,852 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>株式会社リあそび</title>
+<meta name="description" content="医療の「できない」を、テクノロジーで「できる」に変える。株式会社リあそび（REASOBI Inc.）">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Murecho:wght@400;500;700;900&family=Unbounded:wght@400;600;800&family=M+PLUS+Rounded+1c:wght@500;700;800&family=Martian+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --void:#060912;
+  --deep:#0A1020;
+  --panel:rgba(170,195,255,.045);
+  --line:rgba(150,180,255,.15);
+  --text:#EAF0FF;
+  --muted:#93A0BF;
+  --sun:#FFB547;
+  --pink:#FF6B8B;
+  --violet:#9B8CFF;
+  --ice:#5CE1E6;
+  --blue:#4D7CFF;
+  --mint:#3DDBB0;
+  --sky:#5AB8FF;
+  --kid-bg:#FFF9EE;
+  --kid-ink:#26193A;
+  --kid-muted:#6B5C7E;
+  --bridge:linear-gradient(90deg,var(--sun),var(--pink) 35%,var(--violet) 65%,var(--ice));
+  --jp:"Murecho","Hiragino Sans","Noto Sans JP",system-ui,sans-serif;
+  --en:"Unbounded","Murecho","Hiragino Sans",sans-serif;
+  --kid:"M PLUS Rounded 1c","Hiragino Maru Gothic ProN","Murecho",sans-serif;
+  --mono:"Martian Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.001s!important;animation-iteration-count:1!important;transition:none!important}}
+body{margin:0;background:var(--void);color:var(--text);font-family:var(--jp);font-size:16px;line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ice);outline-offset:3px;border-radius:6px}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{text-wrap:balance;word-break:auto-phrase}
+.in{max-width:1200px;margin-inline:auto;padding-inline:clamp(16px,4vw,40px)}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.grad-text{background:var(--bridge);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* ===== header ===== */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(6,9,18,.62);backdrop-filter:blur(14px) saturate(140%);-webkit-backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line)}
+.nav .in{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.brand svg{width:30px;height:30px;flex:none}
+.brand b{font-family:var(--en);font-weight:600;font-size:15px;letter-spacing:.18em}
+.brand small{display:block;font-size:10px;color:var(--muted);letter-spacing:.1em;line-height:1}
+.nav nav{display:flex;gap:26px;font-size:13px}
+.nav nav a{text-decoration:none;color:var(--muted);transition:color .2s}
+.nav nav a:hover{color:var(--text)}
+.nav .cta{font-size:13px;font-weight:700;text-decoration:none;padding:9px 16px;border-radius:999px;background:var(--text);color:var(--void)}
+@media (max-width:860px){.nav nav{display:none}}
+
+/* ===== hero ===== */
+.hero{position:relative;overflow:hidden;background:var(--void);isolation:isolate}
+.hero canvas{position:absolute;inset:0;z-index:-1;display:block}
+.hero::before{content:"";position:absolute;left:-20%;right:-20%;bottom:0;height:46%;z-index:0;pointer-events:none;
+  background:
+    linear-gradient(to top,rgba(77,124,255,.10),transparent 70%),
+    repeating-linear-gradient(90deg,rgba(150,180,255,.10) 0 1px,transparent 1px 80px),
+    repeating-linear-gradient(0deg,rgba(150,180,255,.10) 0 1px,transparent 1px 60px);
+  transform:perspective(420px) rotateX(62deg);transform-origin:bottom;
+  -webkit-mask-image:linear-gradient(to top,#000 10%,transparent 90%);mask-image:linear-gradient(to top,#000 10%,transparent 90%)}
+.hero .in{position:relative;z-index:1;display:grid;gap:28px;padding-block:28px 64px}
+.hud-top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted)}
+.hud-top span b{color:var(--text);font-weight:500}
+.word-area{height:clamp(240px,46vh,480px)}
+.word-caption{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:-8px}
+.word-caption div{display:grid;gap:4px;font-size:14px;line-height:1.6}
+.word-caption div:last-child{text-align:right}
+.word-caption .who{color:var(--muted)}
+.word-caption .kidc{color:var(--sun)}
+.word-caption .medc{color:var(--ice)}
+.word-caption em{font-style:normal;font-weight:700;transition:opacity .4s}
+@media (max-width:600px){.word-caption{grid-template-columns:1fr}.word-caption div:last-child{text-align:left}}
+.hero h1{font-weight:900;font-size:clamp(26px,4.2vw,50px);line-height:1.4;letter-spacing:.01em;max-width:18em}
+.hero .lead{color:var(--muted);max-width:38em;font-size:16px}
+.doors-cta{display:flex;gap:12px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:12px;text-decoration:none;font-weight:700;font-size:15px;padding:14px 22px 14px 18px;border-radius:999px;transition:transform .2s,box-shadow .2s}
+.pill:hover{transform:translateY(-2px)}
+.pill i{font-style:normal;font-family:var(--mono);font-size:10px;letter-spacing:.12em;padding:3px 8px;border-radius:999px}
+.pill.kid{background:linear-gradient(100deg,var(--sun),var(--pink));color:#2A1300;box-shadow:0 8px 30px -8px rgba(255,107,139,.6)}
+.pill.kid i{background:rgba(42,19,0,.14)}
+.pill.med{background:rgba(92,225,230,.08);color:var(--ice);border:1px solid rgba(92,225,230,.45);box-shadow:inset 0 0 20px rgba(92,225,230,.08)}
+.pill.med i{background:rgba(92,225,230,.14)}
+
+/* ===== doors ===== */
+.doors{display:flex;min-height:420px}
+.door{flex:1;position:relative;overflow:hidden;text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end;gap:10px;padding:40px clamp(20px,4vw,56px);transition:flex-grow .6s cubic-bezier(.2,.8,.2,1)}
+.doors:hover .door{flex-grow:.8}
+.doors .door:hover{flex-grow:1.5}
+.door.kid{background:linear-gradient(145deg,#FFC861,#FF7E97 70%,#FF6BB5);color:var(--kid-ink)}
+.door.med{background:#08101F;color:var(--text);
+  background-image:linear-gradient(rgba(92,225,230,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(92,225,230,.07) 1px,transparent 1px);background-size:32px 32px}
+.door .tag{font-family:var(--mono);font-size:11px;letter-spacing:.14em}
+.door.kid .tag{color:rgba(38,25,58,.7)}
+.door.med .tag{color:var(--ice)}
+.door .big{font-weight:900;font-size:clamp(32px,4.4vw,56px);line-height:1.15}
+.door .name{font-family:var(--en);font-weight:800;font-size:clamp(18px,2vw,24px);letter-spacing:.06em}
+.door .for{font-size:15px;max-width:26em}
+.door.kid .for{font-family:var(--kid);font-weight:700}
+.door.med .for{color:var(--muted)}
+.door .go{margin-top:8px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;display:inline-flex;gap:8px;align-items:center}
+.door .go::after{content:"→";transition:transform .3s}
+.door:hover .go::after{transform:translateX(6px)}
+.balls{position:absolute;inset:0;pointer-events:none}
+.balls span{position:absolute;border-radius:50%;animation:bob 4s ease-in-out infinite}
+.balls span:nth-child(1){width:110px;height:110px;background:#FFF2C2;top:10%;right:12%}
+.balls span:nth-child(2){width:56px;height:56px;background:#7FE3C8;top:34%;right:40%;animation-delay:-1.2s;animation-duration:3.2s}
+.balls span:nth-child(3){width:36px;height:36px;background:#6CC2FF;top:14%;right:56%;animation-delay:-2s;animation-duration:2.6s}
+.balls span:nth-child(4){width:170px;height:170px;border:14px solid rgba(255,255,255,.45);top:-40px;left:-40px;animation-duration:6s}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
+.scan{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.scan::before{content:"";position:absolute;left:0;right:0;height:120px;top:-120px;background:linear-gradient(to bottom,transparent,rgba(92,225,230,.16),transparent);animation:scan 4.5s linear infinite}
+.scan svg{position:absolute;top:28px;right:28px;width:min(52%,300px);height:auto;opacity:.9}
+@keyframes scan{to{top:110%}}
+@media (max-width:760px){.doors{flex-direction:column}.door{min-height:320px}.doors:hover .door,.doors .door:hover{flex-grow:1}}
+
+/* ===== section heads ===== */
+.sec{padding-block:clamp(72px,10vw,128px)}
+.head{display:grid;gap:16px;max-width:56em;margin-bottom:clamp(36px,5vw,56px)}
+.head h2{font-weight:900;font-size:clamp(30px,4.4vw,54px);line-height:1.3}
+.head p{color:var(--muted);font-size:16px;max-width:42em}
+.chip{justify-self:start;display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.12em;padding:6px 12px;border-radius:999px}
+.chip::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor}
+
+/* ===== KIDS (daylight world) ===== */
+.kids{background:var(--kid-bg);color:var(--kid-ink);position:relative;overflow:hidden;border-radius:40px 40px 0 0;margin-top:-1px}
+.kids .chip{background:#FFE7B0;color:#8A4B00}
+.kids .head p{color:var(--kid-muted)}
+.kids .brandline{font-family:var(--en);font-weight:800;font-size:clamp(44px,9vw,120px);line-height:.95;letter-spacing:-.01em;background:linear-gradient(90deg,#FFA51F,#FF5C86 60%,#FF6BB5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.kids .say{font-family:var(--kid);font-weight:800;font-size:clamp(18px,2.2vw,24px);color:var(--kid-ink);line-height:1.7}
+.kid-more{justify-self:start;display:inline-flex;align-items:center;gap:14px;margin-top:8px;text-decoration:none;font-weight:900;font-size:16px;color:#fff;background:linear-gradient(100deg,#FFA51F,#FF5C86);padding:14px 16px 14px 24px;border-radius:999px;box-shadow:0 12px 30px -10px rgba(255,92,134,.6);transition:transform .2s,box-shadow .2s}
+.kid-more:hover{transform:translateY(-2px);box-shadow:0 16px 34px -10px rgba(255,92,134,.7)}
+.kid-more small{display:block;font-family:var(--mono);font-size:10px;font-weight:400;letter-spacing:.12em;opacity:.9}
+.kid-more i{font-style:normal;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff;color:#FF5C86;font-size:15px;transition:transform .2s}
+.kid-more:hover i{transform:translateX(3px)}
+.blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.55;pointer-events:none;animation:bob 7s ease-in-out infinite}
+.kids-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;position:relative}
+@media (max-width:900px){.kids-grid{grid-template-columns:1fr}}
+.toys{display:grid;gap:14px}
+.toy{display:grid;grid-template-columns:72px 1fr;gap:18px;align-items:center;padding:18px 20px;border-radius:26px;transition:transform .25s}
+.toy:hover{transform:translateY(-3px) rotate(-.4deg)}
+.toy:nth-child(1){background:#FFE7B0}
+.toy:nth-child(2){background:#D3F5EA}
+.toy:nth-child(3){background:#DCEEFF}
+.toy svg{width:72px;height:72px}
+.toy h3{font-size:19px;font-weight:900;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.toy h3 span{font-family:var(--kid);font-size:14px;font-weight:700;color:var(--kid-muted)}
+.toy p{font-size:14px;color:var(--kid-muted);line-height:1.7}
+
+.phone{justify-self:center;width:min(300px,100%);aspect-ratio:9/18.5;max-width:100%;border-radius:44px;background:#1B1230;padding:12px;box-shadow:0 40px 80px -30px rgba(80,30,90,.45),0 0 0 2px #2E2147 inset;position:relative}
+.phone .screen{height:100%;border-radius:34px;background:linear-gradient(180deg,#FFF4D6,#FFE1EA);overflow:hidden;display:flex;flex-direction:column;gap:12px;padding:30px 18px 18px;font-family:var(--kid);color:var(--kid-ink)}
+.phone .notch{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:84px;height:22px;border-radius:12px;background:#1B1230}
+.phone .hi{font-weight:800;font-size:18px;display:flex;justify-content:space-between;align-items:center}
+.phone .hi span{font-size:12px;background:#fff;padding:3px 10px;border-radius:999px;color:#C77800}
+.ring{display:grid;place-items:center;position:relative;margin-block:4px}
+.ring svg{width:128px;height:128px}
+.ring div{position:absolute;text-align:center;line-height:1.2}
+.ring b{font-family:var(--en);font-size:28px;font-weight:800;display:block}
+.ring small{font-size:11px;color:var(--kid-muted)}
+.missions{display:grid;gap:7px;font-size:13px;font-weight:700}
+.missions div{display:flex;align-items:center;gap:10px;background:#fff;border-radius:14px;padding:8px 10px}
+.missions i{font-style:normal;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:12px;flex:none}
+.missions .done i{background:#3DDBB0;color:#fff}
+.missions .todo i{border:2px dashed #FFA51F}
+.goal{margin-top:auto;background:var(--kid-ink);color:#FFF4D6;border-radius:16px;padding:10px 12px;font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.goal b{font-family:var(--en);color:#FFC861}
+.imgnote{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--kid-muted);text-align:center;margin-top:12px}
+
+.journey{margin-top:clamp(56px,7vw,88px);position:relative}
+.journey h3{font-family:var(--kid);font-weight:800;font-size:20px;margin-bottom:28px}
+.track{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;position:relative}
+.track::before{content:"";position:absolute;left:12%;right:12%;top:31px;height:6px;border-radius:3px;background:repeating-linear-gradient(90deg,#FFD27A 0 14px,transparent 14px 24px)}
+.runner{position:absolute;top:22px;left:12%;width:24px;height:24px;border-radius:50%;background:#FF5C86;box-shadow:0 0 0 6px rgba(255,92,134,.2);animation:run 6s cubic-bezier(.6,0,.4,1) infinite}
+@keyframes run{0%{left:12%}30%{left:37%}55%{left:62%}85%,100%{left:calc(88% - 24px)}}
+.stop{display:grid;justify-items:center;text-align:center;gap:8px;position:relative}
+.stop .dot{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;font-family:var(--en);font-weight:800;font-size:20px;border:5px solid var(--kid-bg)}
+.stop:nth-child(2) .dot{background:#FFE7B0}
+.stop:nth-child(3) .dot{background:#FFD3DE}
+.stop:nth-child(4) .dot{background:#D3F5EA}
+.stop:nth-child(5) .dot{background:#DCEEFF}
+.stop b{font-family:var(--kid);font-weight:800;font-size:18px}
+.stop span{font-size:13px;color:var(--kid-muted);line-height:1.6}
+@media (max-width:700px){
+  .track{grid-template-columns:1fr;gap:18px}
+  .track::before{left:31px;right:auto;top:20px;bottom:20px;width:6px;height:auto;background:repeating-linear-gradient(180deg,#FFD27A 0 14px,transparent 14px 24px)}
+  .runner{display:none}
+  .stop{grid-template-columns:68px 1fr;justify-items:start;text-align:left;column-gap:16px}
+  .stop .dot{grid-row:span 2}
+}
+
+/* ===== MEDICAL (night lab world) ===== */
+.med{background:#070C18;position:relative;overflow:hidden;
+  background-image:linear-gradient(rgba(92,225,230,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(92,225,230,.05) 1px,transparent 1px);background-size:48px 48px}
+.med::before{content:"";position:absolute;width:900px;height:900px;right:-300px;top:-300px;border-radius:50%;background:radial-gradient(closest-side,rgba(77,124,255,.22),transparent);pointer-events:none}
+.med .chip{background:rgba(92,225,230,.1);color:var(--ice)}
+.med .brandline{font-family:var(--en);font-weight:800;font-size:clamp(40px,8vw,108px);line-height:.95;background:linear-gradient(90deg,var(--ice),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+.med .say{font-family:var(--mono);font-size:13px;color:var(--ice);letter-spacing:.06em}
+
+.stages{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;position:relative;margin-bottom:56px}
+.stages::before{content:"";position:absolute;left:10%;right:10%;top:15px;height:2px;background:linear-gradient(90deg,rgba(92,225,230,.2),var(--ice),var(--blue));box-shadow:0 0 12px rgba(92,225,230,.6)}
+.st{display:grid;gap:8px;justify-items:center;text-align:center;position:relative}
+.st .node{width:32px;height:32px;border-radius:50%;background:#070C18;border:2px solid var(--ice);display:grid;place-items:center;font-family:var(--mono);font-size:11px;color:var(--ice);box-shadow:0 0 16px rgba(92,225,230,.5)}
+.st:last-child .node{background:var(--ice);color:#070C18}
+.st b{font-size:16px;font-weight:700}
+.st span{font-size:13px;color:var(--muted);line-height:1.6;max-width:14em}
+@media (max-width:860px){
+  .stages{grid-template-columns:1fr;gap:20px}
+  .stages::before{left:15px;right:auto;top:10px;bottom:10px;width:2px;height:auto;background:linear-gradient(180deg,rgba(92,225,230,.2),var(--ice),var(--blue))}
+  .st{grid-template-columns:32px 1fr;justify-items:start;text-align:left;column-gap:16px}
+  .st .node{grid-row:span 2}
+  .st span{max-width:none}
+}
+
+.lab-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:clamp(24px,4vw,48px);align-items:start}
+@media (max-width:960px){.lab-grid{grid-template-columns:1fr}}
+.offers{display:grid;gap:12px}
+.offer{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:20px 22px;display:grid;gap:6px;transition:border-color .25s,background .25s}
+.offer:hover{border-color:rgba(92,225,230,.5);background:rgba(92,225,230,.05)}
+.offer .mono{color:var(--ice)}
+.offer h3{font-size:19px;font-weight:700}
+.offer p{font-size:14px;color:var(--muted);line-height:1.7}
+.ladder{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:8px;font-family:var(--mono);font-size:10px;letter-spacing:.08em}
+.ladder span{padding:7px 12px;border-radius:999px;border:1px solid rgba(92,225,230,.4);color:var(--ice)}
+.ladder em{font-style:normal;color:var(--muted)}
+
+.console{border-radius:20px;border:1px solid rgba(92,225,230,.28);background:rgba(8,16,32,.85);box-shadow:0 0 0 1px rgba(92,225,230,.05),0 30px 80px -30px rgba(77,124,255,.5);overflow:hidden;min-width:0}
+.console .bar{display:flex;align-items:center;gap:8px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.console .bar i{width:10px;height:10px;border-radius:50%;background:#26324C}
+.console .bar .mono{margin-left:auto;color:var(--muted);font-size:10px}
+.ctabs{display:flex;gap:4px;padding:10px 12px;border-bottom:1px solid var(--line);overflow-x:auto}
+.ctabs button{font:inherit;font-size:13px;cursor:pointer;border:1px solid transparent;background:none;color:var(--muted);padding:6px 12px;border-radius:999px;white-space:nowrap}
+.ctabs button[aria-selected="true"]{color:var(--void);background:var(--ice);font-weight:700}
+.ctabs button:hover:not([aria-selected="true"]){border-color:var(--line);color:var(--text)}
+.cbody{padding:18px;display:grid;gap:14px;min-height:340px;align-content:start}
+.msg{display:grid;gap:6px}
+.msg .who{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--muted)}
+.msg.me .bubble{background:rgba(77,124,255,.16);border:1px solid rgba(77,124,255,.35);border-radius:14px 14px 4px 14px;padding:12px 14px;font-size:14px;justify-self:end;max-width:92%}
+.msg.me .who{justify-self:end}
+.msg.ai .bubble{font-size:14px;line-height:1.85;white-space:pre-wrap;color:#D6E2FF}
+.caret{display:inline-block;width:8px;height:1.1em;vertical-align:-3px;background:var(--ice);margin-left:2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.cfoot{padding:10px 18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--muted)}
+.cfoot b{color:var(--sun);font-weight:500}
+
+/* ===== METHOD ===== */
+.method{background:var(--void)}
+.method-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+@media (max-width:900px){.method-grid{grid-template-columns:1fr}}
+.venn{width:100%;max-width:480px;justify-self:center;height:auto;overflow:visible}
+.venn text{font-family:var(--jp)}
+.pillars{display:grid;gap:22px}
+.pillar{display:grid;gap:4px;padding-left:18px;border-left:2px solid var(--line)}
+.pillar:nth-child(1){border-color:var(--sun)}.pillar:nth-child(2){border-color:var(--ice)}.pillar:nth-child(3){border-color:var(--violet)}
+.pillar .mono{color:var(--muted);font-size:10px}
+.pillar h3{font-size:22px;font-weight:900}
+.pillar p{color:var(--muted);font-size:15px}
+.loop{margin-top:clamp(40px,6vw,64px);display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.loop div{padding:22px;display:grid;gap:6px;border-right:1px solid var(--line);position:relative}
+.loop div:last-child{border-right:0;background:linear-gradient(135deg,rgba(255,181,71,.12),rgba(92,225,230,.12))}
+.loop .mono{color:var(--muted);font-size:10px}
+.loop b{font-size:18px;font-weight:900}
+.loop span{font-size:13px;color:var(--muted);line-height:1.6}
+@media (max-width:760px){.loop{grid-template-columns:1fr 1fr}.loop div:nth-child(2){border-right:0}.loop div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media (max-width:420px){.loop{grid-template-columns:1fr}.loop div{border-right:0;border-bottom:1px solid var(--line)}}
+
+/* ===== UNIVERSE ===== */
+.uni{background:var(--deep);border-top:1px solid var(--line)}
+.uni-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+@media (max-width:900px){.uni-grid{grid-template-columns:1fr}}
+.orbit{width:100%;max-width:520px;justify-self:center;height:auto}
+.orbit text{font-family:var(--en);font-weight:600}
+.legend{display:grid;gap:4px}
+.legend div{display:grid;grid-template-columns:14px 1fr auto;gap:14px;align-items:center;padding-block:14px;border-bottom:1px solid var(--line)}
+.legend i{width:12px;height:12px;border-radius:50%}
+.legend b{font-family:var(--en);font-weight:600;font-size:14px;letter-spacing:.06em;display:block}
+.legend span{font-size:13px;color:var(--muted)}
+.legend .st8{font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:3px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.legend .st8.on{color:var(--mint);border-color:rgba(61,219,176,.4)}
+
+.projects{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:clamp(48px,6vw,72px)}
+@media (max-width:960px){.projects{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.projects{grid-template-columns:1fr}}
+.proj{border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:20px;display:grid;gap:8px;align-content:start;position:relative;overflow:hidden}
+.proj::after{content:"";position:absolute;left:0;right:0;top:0;height:3px}
+.proj.k::after{background:linear-gradient(90deg,var(--sun),var(--pink))}
+.proj.m::after{background:linear-gradient(90deg,var(--ice),var(--blue))}
+.proj .mono{color:var(--muted);font-size:10px}
+.proj h3{font-size:18px;font-weight:700}
+.proj p{font-size:13px;color:var(--muted);line-height:1.7}
+
+/* ===== CONTACT ===== */
+.contact{background:var(--void);position:relative;overflow:hidden}
+.contact::before{content:"";position:absolute;left:50%;top:0;width:1200px;height:600px;transform:translateX(-50%);background:radial-gradient(closest-side,rgba(155,140,255,.18),transparent);pointer-events:none}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);position:relative}
+@media (max-width:900px){.contact-grid{grid-template-columns:1fr}}
+.contact h2{font-weight:900;font-size:clamp(32px,5vw,60px);line-height:1.25}
+dl.profile{margin:28px 0 0;display:grid;grid-template-columns:6.5em 1fr;font-size:14px}
+dl.profile dt,dl.profile dd{margin:0;padding-block:12px;border-bottom:1px solid var(--line)}
+dl.profile dt{color:var(--muted)}
+.todo{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--pink)}
+form{display:grid;gap:14px;border:1px solid var(--line);background:rgba(10,16,32,.7);backdrop-filter:blur(8px);border-radius:24px;padding:clamp(20px,3vw,32px)}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{display:grid;gap:2px;cursor:pointer;border:1px solid var(--line);border-radius:14px;padding:12px 14px;font-size:14px;font-weight:700;transition:all .2s}
+.seg label small{font-weight:400;font-size:11px;color:var(--muted)}
+.seg input:focus-visible+label{outline:2px solid var(--ice);outline-offset:2px}
+#a-kid:checked+label{border-color:var(--sun);background:rgba(255,181,71,.1);color:var(--sun)}
+#a-med:checked+label{border-color:var(--ice);background:rgba(92,225,230,.08);color:var(--ice)}
+.field{display:grid;gap:6px;font-size:13px;color:var(--muted)}
+.field input,.field select,.field textarea{font:inherit;font-size:15px;color:var(--text);background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+.field select option{background:var(--deep)}
+.field textarea{min-height:110px;resize:vertical}
+.submit{justify-self:start;font:inherit;font-weight:700;font-size:15px;cursor:pointer;border:0;border-radius:999px;padding:14px 26px;background:var(--bridge);color:#130B20}
+.notice{font-size:13px;line-height:1.7;border-radius:12px;padding:12px 14px;display:grid;gap:6px}
+.notice.ok{color:var(--mint);border:1px solid rgba(61,219,176,.45);background:rgba(61,219,176,.06)}
+.notice.err{color:var(--sun);border:1px solid rgba(255,181,71,.45);background:rgba(255,181,71,.06)}
+.notice .addr{display:flex;gap:8px;align-items:center;flex-wrap:wrap;color:var(--text)}
+.notice .addr code{font-family:var(--mono);font-size:12px;user-select:all;background:rgba(255,255,255,.06);padding:4px 8px;border-radius:6px}
+.notice .addr button{font:inherit;font-size:12px;cursor:pointer;color:var(--text);background:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+.submit:disabled{opacity:.6;cursor:progress}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+footer{border-top:1px solid var(--line);background:var(--void)}
+footer .in{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:32px;color:var(--muted);font-size:12px}
+</style>
+
+<header class="nav">
+  <div class="in">
+    <a class="brand" href="#top" aria-label="株式会社リあそび トップへ">
+      <svg viewBox="0 0 32 32" aria-hidden="true">
+        <defs>
+          <linearGradient id="lg-k" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFB547"/><stop offset="1" stop-color="#FF6B8B"/></linearGradient>
+          <linearGradient id="lg-m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5CE1E6"/><stop offset="1" stop-color="#4D7CFF"/></linearGradient>
+        </defs>
+        <path d="M16 4 A12 12 0 0 0 16 28" fill="none" stroke="url(#lg-k)" stroke-width="4" stroke-linecap="round"/>
+        <path d="M16 28 A12 12 0 0 0 16 4" fill="none" stroke="url(#lg-m)" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 5"/>
+        <circle cx="16" cy="16" r="4" fill="#EAF0FF"/>
+      </svg>
+      <span><b>REASOBI</b><small>株式会社リあそび</small></span>
+    </a>
+    <nav aria-label="サイト内">
+      <a href="#kids">子どもたちへ</a>
+      <a href="#medical">医療者へ</a>
+      <a href="#method">私たちのやり方</a>
+      <a href="#universe">事業と構想</a>
+      <a href="#contact">会社概要</a>
+    </nav>
+    <a class="cta" href="#contact">相談する</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- ===== HERO ===== -->
+  <section class="hero" aria-labelledby="hero-title">
+    <canvas id="hero-cv" aria-hidden="true"></canvas>
+    <div class="in">
+      <div class="hud-top mono">
+        <span>Mission ／ <b>医療を、もっと自由に。</b></span>
+        <span>Clinical Insight × Technology × Implementation</span>
+      </div>
+      <div class="word-area" aria-hidden="true"></div>
+      <div class="word-caption" aria-live="off">
+        <div class="kidc"><span class="who mono">For kids ／ 子どもたち</span><em id="cap-k">病室から出られない。体を動かせない。</em></div>
+        <div class="medc"><span class="who mono">For medical ／ 医療者</span><em id="cap-m">AIを使いこなせない。作りたいものを形にできない。</em></div>
+      </div>
+      <h1 id="hero-title">医療の「できない」を、<br>テクノロジーで<span class="grad-text">「できる」</span>に変える。</h1>
+      <p class="lead">株式会社リあそびは、医療現場で課題を見つけ、自分たちで作り、現場で試し、社会に届ける会社です。</p>
+      <div class="doors-cta">
+        <a class="pill kid" href="#kids"><i>FOR KIDS</i>子どもたちの「できる」を増やす</a>
+        <a class="pill med" href="#medical"><i>FOR MEDICAL</i>医療者の「できる」を増やす</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DOORS ===== -->
+  <div class="doors">
+    <a class="door kid" href="#kids">
+      <div class="balls" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+      <span class="tag">FOR KIDS ／ 入院中の子どもたちへ</span>
+      <span class="big">身体を動かす。</span>
+      <span class="name">REASOBI</span>
+      <span class="for">びょういんの なかでも、あそべる。うごける。がっこうに もどれる。</span>
+      <span class="go">EXPLORE</span>
+    </a>
+    <a class="door med" href="#medical">
+      <div class="scan" aria-hidden="true">
+        <svg viewBox="0 0 300 120"><polyline points="0,70 60,70 75,70 85,30 95,100 105,55 115,70 170,70 182,70 192,22 202,108 212,60 222,70 300,70" fill="none" stroke="#5CE1E6" stroke-width="2" opacity=".85"/><circle cx="300" cy="70" r="4" fill="#5CE1E6"/></svg>
+      </div>
+      <span class="tag">FOR MEDICAL PROFESSIONALS ／ 医師・看護師・医療機関へ</span>
+      <span class="big">医療を動かす。</span>
+      <span class="name">REASOBI LAB</span>
+      <span class="for">AIを学び、使いこなし、自分たちの手で医療のツールを作る。</span>
+      <span class="go">EXPLORE</span>
+    </a>
+  </div>
+
+  <!-- ===== KIDS ===== -->
+  <section class="kids sec" id="kids" aria-labelledby="kids-title">
+    <span class="blob" style="width:380px;height:380px;background:#FFE08A;left:-140px;top:120px"></span>
+    <span class="blob" style="width:260px;height:260px;background:#BDF0DF;right:-80px;top:40px;animation-delay:-3s"></span>
+    <span class="blob" style="width:200px;height:200px;background:#FFC6D5;right:30%;bottom:-60px;animation-delay:-5s"></span>
+    <div class="in" style="position:relative">
+      <div class="head">
+        <span class="chip">FOR KIDS ／ 入院中の子どもたちへ</span>
+        <div class="brandline">REASOBI</div>
+        <h2 id="kids-title">病室から、できることを増やす。</h2>
+        <p class="say">びょうしつを、なおす ばしょ だけじゃなく、<br>あそんで、うごいて、またみんなの ところへ もどる ばしょに。</p>
+        <p>長期入院中の子どもたちの体験・運動・社会復帰を支える Patient Experience 事業です。病院のなかに、遊びと運動の時間をつくります。</p>
+        <a class="kid-more" href="https://kohei-miyazaki.github.io/reasobi-Disneyland-in-a-Hospital/#diff" target="_blank" rel="noopener"><span><small>WHY REASOBI ／ 新しいタブで開きます</small>REASOBI の詳しい説明を見る</span><i aria-hidden="true">↗</i></a>
+      </div>
+
+      <div class="kids-grid">
+        <div class="toys">
+          <article class="toy">
+            <svg viewBox="0 0 72 72" aria-hidden="true"><rect x="8" y="14" width="56" height="44" rx="10" fill="#FFB547"/><rect x="14" y="40" width="22" height="12" rx="4" fill="#fff"/><circle cx="50" cy="30" r="8" fill="#FF6B8B"/><circle cx="26" cy="26" r="4" fill="#fff"/><path d="M44 50 l6 -8 6 8z" fill="#fff"/></svg>
+            <div><h3>空間型リハビリ<span>へやが あそびばに なる</span></h3><p>病室一体型フィットネス。ベッドのそばで、遊びながら体を動かせる空間をつくります。</p></div>
+          </article>
+          <article class="toy">
+            <svg viewBox="0 0 72 72" aria-hidden="true"><rect x="8" y="24" width="56" height="28" rx="12" fill="#3DDBB0"/><circle cx="25" cy="38" r="8" fill="#fff"/><circle cx="47" cy="38" r="8" fill="#fff"/><circle cx="25" cy="38" r="3.5" fill="#26193A"/><circle cx="47" cy="38" r="3.5" fill="#26193A"/><path d="M14 24 q22 -16 44 0" fill="none" stroke="#26193A" stroke-width="3" stroke-linecap="round"/></svg>
+            <div><h3>VR<span>びょうしつから そとの せかいへ</span></h3><p>病室にいながら外の世界を体験し、「動きたい」と思えるきっかけをつくります。</p></div>
+          </article>
+          <article class="toy">
+            <svg viewBox="0 0 72 72" aria-hidden="true"><rect x="20" y="6" width="32" height="60" rx="8" fill="#5AB8FF"/><rect x="24" y="14" width="24" height="40" rx="4" fill="#fff"/><path d="M36 22 l3 6 6 1 -4.5 4 1 6 -5.5 -3 -5.5 3 1 -6 -4.5 -4 6 -1z" fill="#FFB547"/><rect x="28" y="44" width="16" height="4" rx="2" fill="#3DDBB0"/></svg>
+            <div><h3>Reasobi One<span>きょうの ぼうけんを きろく</span></h3><p>運動と体験を記録して続けられるアプリ。学校復帰・運動復帰までを見守ります。</p></div>
+          </article>
+        </div>
+
+        <div>
+          <div class="phone" role="img" aria-label="Reasobi One のアプリ画面イメージ。今日の運動72%、ミッション3つ中2つ達成">
+            <span class="notch"></span>
+            <div class="screen">
+              <div class="hi">おはよう！<span>★ 12</span></div>
+              <div class="ring">
+                <svg viewBox="0 0 120 120" aria-hidden="true">
+                  <circle cx="60" cy="60" r="50" fill="none" stroke="#fff" stroke-width="12"/>
+                  <circle cx="60" cy="60" r="50" fill="none" stroke="url(#ring-g)" stroke-width="12" stroke-linecap="round" stroke-dasharray="226 314" transform="rotate(-90 60 60)"/>
+                  <defs><linearGradient id="ring-g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FFA51F"/><stop offset="1" stop-color="#FF5C86"/></linearGradient></defs>
+                </svg>
+                <div><b>72%</b><small>きょうの うごき</small></div>
+              </div>
+              <div class="missions">
+                <div class="done"><i>✓</i>ベッドで うでまわし 10かい</div>
+                <div class="done"><i>✓</i>VRで うみを たんけん</div>
+                <div class="todo"><i></i>プレイルームで ボールあそび</div>
+              </div>
+              <div class="goal">がっこうまで あと<b>3</b>ぼうけん</div>
+            </div>
+          </div>
+          <p class="imgnote">REASOBI ONE ／ 画面イメージ</p>
+        </div>
+      </div>
+
+      <div class="journey">
+        <h3>びょうしつから、がっこうへ。</h3>
+        <div class="track">
+          <span class="runner" aria-hidden="true"></span>
+          <div class="stop"><span class="dot">1</span><b>びょうしつ</b><span>入院中。ベッドの上が一日の中心。</span></div>
+          <div class="stop"><span class="dot">2</span><b>あそぶ</b><span>VRや遊びで「やってみたい」を取り戻す。</span></div>
+          <div class="stop"><span class="dot">3</span><b>うごく</b><span>空間型リハビリで、楽しく体を動かす。</span></div>
+          <div class="stop"><span class="dot">4</span><b>がっこうへ</b><span>Reasobi One で記録し、学校復帰・運動復帰へ。</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MEDICAL ===== -->
+  <section class="med sec" id="medical" aria-labelledby="med-title">
+    <div class="in" style="position:relative">
+      <div class="head">
+        <span class="chip">FOR MEDICAL PROFESSIONALS ／ 医療者へ</span>
+        <div class="brandline">REASOBI LAB</div>
+        <h2 id="med-title">医療者の、できることを増やす。</h2>
+        <p class="say">// MEDICAL AI EDUCATION → IMPLEMENTATION → PRODUCT DEVELOPMENT</p>
+        <p>病院・クリニック・医療者に特化して、AIの導入から定着、効果の創出、ツール開発、新しいサービスづくりまで伴走します。研修だけで終わりません。</p>
+      </div>
+
+      <div class="stages" aria-label="5つのステージ">
+        <div class="st"><span class="node">01</span><b>AI導入</b><span>ChatGPT・Gemini・NotebookLM 等を医療現場へ</span></div>
+        <div class="st"><span class="node">02</span><b>AI定着</b><span>医師・看護師向け研修、ワークショップ</span></div>
+        <div class="st"><span class="node">03</span><b>効果創出</b><span>病状説明、文書作成、研究、教育、業務効率化</span></div>
+        <div class="st"><span class="node">04</span><b>開発</b><span>AIエージェント、Webアプリ、院内ツール</span></div>
+        <div class="st"><span class="node">05</span><b>事業創出</b><span>病院・大学と医療AIサービスを共同開発</span></div>
+      </div>
+
+      <div class="lab-grid">
+        <div class="offers">
+          <article class="offer"><span class="mono">Education</span><h3>教育・研修</h3><p>医師・看護師・医学生向けのAI研修、ワークショップ、勉強会。明日の業務で使えるところまで練習します。</p></article>
+          <article class="offer"><span class="mono">Implementation</span><h3>導入支援</h3><p>院内のルールや個人情報の扱いに合わせて、生成AIを安全に導入し、現場に定着させます。</p></article>
+          <article class="offer"><span class="mono">Development</span><h3>開発</h3><p>AIエージェント、Webアプリ、院内ツールを、現場の医療者と一緒に作ります。</p></article>
+          <div class="ladder" aria-label="事業の発展"><span>EDUCATION</span><em>→</em><span>IMPLEMENTATION</span><em>→</em><span>PRODUCT</span></div>
+        </div>
+
+        <div class="console" aria-label="医療AI活用のデモ">
+          <div class="bar"><i></i><i></i><i></i><span class="mono">REASOBI LAB ／ DEMO</span></div>
+          <div class="ctabs" role="tablist" id="ctabs"></div>
+          <div class="cbody" id="cbody"></div>
+          <div class="cfoot"><span>画面イメージ（デモ）</span><b>AIの出力は、必ず医療者が確認して使います</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== METHOD ===== -->
+  <section class="method sec" id="method" aria-labelledby="method-title">
+    <div class="in">
+      <div class="method-grid">
+        <div>
+          <div class="head">
+            <span class="chip" style="background:rgba(155,140,255,.12);color:var(--violet)">HOW WE WORK</span>
+            <h2 id="method-title">医療現場 × テクノロジー × 実装</h2>
+            <p>医師が「あったらいい」と言うだけの会社でも、エンジニアが医療を想像して作る会社でもありません。現場で課題を見つけ、自分たちで作り、現場で試し、社会に届けます。</p>
+          </div>
+          <div class="pillars">
+            <div class="pillar"><span class="mono">Clinical Insight</span><h3>医療現場</h3><p>臨床にいる医療者として、毎日の現場から本当の課題を見つけます。</p></div>
+            <div class="pillar"><span class="mono">Technology</span><h3>テクノロジー</h3><p>AI、VR、Webアプリ。課題に合う技術を選び、自分たちの手で作ります。</p></div>
+            <div class="pillar"><span class="mono">Implementation</span><h3>実装</h3><p>病棟や診療の流れの中で試し、使われ続ける形にして届けます。</p></div>
+          </div>
+        </div>
+        <svg class="venn" viewBox="0 0 480 460" role="img" aria-label="医療現場、テクノロジー、実装の3つが重なる中心に REASOBI がある図">
+          <defs>
+            <radialGradient id="v1"><stop offset="0" stop-color="#FFB547" stop-opacity=".35"/><stop offset="1" stop-color="#FFB547" stop-opacity=".05"/></radialGradient>
+            <radialGradient id="v2"><stop offset="0" stop-color="#5CE1E6" stop-opacity=".35"/><stop offset="1" stop-color="#5CE1E6" stop-opacity=".05"/></radialGradient>
+            <radialGradient id="v3"><stop offset="0" stop-color="#9B8CFF" stop-opacity=".35"/><stop offset="1" stop-color="#9B8CFF" stop-opacity=".05"/></radialGradient>
+          </defs>
+          <circle cx="170" cy="170" r="120" fill="url(#v1)" stroke="#FFB547" stroke-opacity=".6"/>
+          <circle cx="310" cy="170" r="120" fill="url(#v2)" stroke="#5CE1E6" stroke-opacity=".6"/>
+          <circle cx="240" cy="290" r="120" fill="url(#v3)" stroke="#9B8CFF" stroke-opacity=".6"/>
+          <text x="120" y="130" fill="#FFB547" font-size="18" font-weight="700" text-anchor="middle">医療現場</text>
+          <text x="360" y="130" fill="#5CE1E6" font-size="18" font-weight="700" text-anchor="middle">テクノロジー</text>
+          <text x="240" y="370" fill="#9B8CFF" font-size="18" font-weight="700" text-anchor="middle">実装</text>
+          <circle cx="240" cy="212" r="38" fill="#060912" stroke="#EAF0FF" stroke-opacity=".5"/>
+          <text x="240" y="217" fill="#EAF0FF" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1.5" style="font-family:'Unbounded',sans-serif">REASOBI</text>
+        </svg>
+      </div>
+      <div class="loop" aria-label="進め方">
+        <div><span class="mono">Step 1</span><b>発見する</b><span>現場で課題を見つける</span></div>
+        <div><span class="mono">Step 2</span><b>作る</b><span>自分たちの手で形にする</span></div>
+        <div><span class="mono">Step 3</span><b>試す</b><span>病棟・診療で使ってみる</span></div>
+        <div><span class="mono">Step 4</span><b>社会実装する</b><span>使われ続ける仕組みにする</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== UNIVERSE ===== -->
+  <section class="uni sec" id="universe" aria-labelledby="uni-title">
+    <div class="in">
+      <div class="uni-grid">
+        <svg class="orbit" id="orbit" viewBox="0 0 520 520" role="img" aria-label="リあそびを中心に、REASOBI と REASOBI LAB が内側の軌道、Child Health と Mental Health が外側の軌道を回る図">
+          <defs>
+            <radialGradient id="core"><stop offset="0" stop-color="#EAF0FF"/><stop offset=".5" stop-color="#9B8CFF" stop-opacity=".5"/><stop offset="1" stop-color="#9B8CFF" stop-opacity="0"/></radialGradient>
+          </defs>
+          <circle cx="260" cy="260" r="120" fill="none" stroke="rgba(150,180,255,.25)"/>
+          <circle cx="260" cy="260" r="210" fill="none" stroke="rgba(150,180,255,.18)" stroke-dasharray="3 8"/>
+          <circle cx="260" cy="260" r="70" fill="url(#core)"/>
+          <text x="260" y="256" text-anchor="middle" fill="#060912" font-size="13" letter-spacing="1">REASOBI</text>
+          <text x="260" y="274" text-anchor="middle" fill="#060912" font-size="10" letter-spacing="1">INC.</text>
+          <g data-orbit="120" data-a="200" data-speed="1"><circle r="26" fill="#FFB547"/><text y="48" text-anchor="middle" fill="#FFB547" font-size="14">REASOBI</text></g>
+          <g data-orbit="120" data-a="20" data-speed="1"><circle r="26" fill="#5CE1E6"/><text y="48" text-anchor="middle" fill="#5CE1E6" font-size="14">LAB</text></g>
+          <g data-orbit="210" data-a="110" data-speed=".55"><circle r="14" fill="none" stroke="#3DDBB0" stroke-width="2" stroke-dasharray="3 3"/><text y="34" text-anchor="middle" fill="#3DDBB0" font-size="13">CHILD HEALTH</text></g>
+          <g data-orbit="210" data-a="290" data-speed=".55"><circle r="14" fill="none" stroke="#FF6B8B" stroke-width="2" stroke-dasharray="3 3"/><text y="34" text-anchor="middle" fill="#FF6B8B" font-size="13">MENTAL HEALTH</text></g>
+        </svg>
+        <div>
+          <div class="head">
+            <span class="chip" style="background:rgba(61,219,176,.1);color:var(--mint)">UNIVERSE</span>
+            <h2 id="uni-title">事業が増えても、ひとつの会社。</h2>
+            <p>患者の「できない」と医療者の「できない」。同じ思想のもとで、事業領域を広げていきます。</p>
+          </div>
+          <div class="legend">
+            <div><i style="background:var(--sun)"></i><span><b>REASOBI</b><span>Patient Experience ／ 病室から、できることを増やす</span></span><span class="st8 on">ACTIVE</span></div>
+            <div><i style="background:var(--ice)"></i><span><b>REASOBI LAB</b><span>Medical AI ／ 医療者のできることを増やす</span></span><span class="st8 on">ACTIVE</span></div>
+            <div><i style="border:2px dashed var(--mint)"></i><span><b>CHILD HEALTH</b><span>ピッポくん・こどもSOS</span></span><span class="st8">NEXT</span></div>
+            <div><i style="border:2px dashed var(--pink)"></i><span><b>MENTAL HEALTH</b><span>今後の展開</span></span><span class="st8">NEXT</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="projects">
+        <article class="proj m"><span class="mono">Medical AI</span><h3>医療AI勉強会</h3><p>医療者・医学生がAIを実際に使い、作るところまで学ぶ場。</p></article>
+        <article class="proj k"><span class="mono">Patient Experience</span><h3>The Room</h3><p>病室そのものを、体験と運動の場に変える空間プロジェクト。</p></article>
+        <article class="proj k"><span class="mono">Child Health</span><h3>ピッポくん</h3><p>子どもと家族に寄り添うキャラクター型のサービス。</p></article>
+        <article class="proj k"><span class="mono">Child Health</span><h3>こどもSOS</h3><p>子どもの「困った」をすぐに届けるための仕組み。</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="contact sec" id="contact" aria-labelledby="contact-title">
+    <div class="in contact-grid">
+      <div>
+        <span class="chip" style="background:rgba(255,181,71,.1);color:var(--sun)">CONTACT</span>
+        <h2 id="contact-title" style="margin-top:16px">一緒に、<br><span class="grad-text">医療を動かそう。</span></h2>
+        <dl class="profile">
+          <dt>会社名</dt><dd>株式会社リあそび（REASOBI Inc.）</dd>
+          <dt>ミッション</dt><dd>医療を、もっと自由に。</dd>
+          <dt>事業</dt><dd>REASOBI ／ REASOBI LAB</dd>
+          <dt>代表者</dt><dd>代表取締役　宮崎 紘平</dd>
+          <dt>設立</dt><dd>2026年11月20日</dd>
+          <dt>所在地</dt><dd>大阪府東大阪市</dd>
+        </dl>
+      </div>
+      <form id="contact-form">
+        <div class="seg" role="radiogroup" aria-label="ご相談の対象">
+          <span><input type="radio" name="aud" id="a-kid" value="kid" checked><label for="a-kid">REASOBI<small>小児病棟・子ども向け</small></label></span>
+          <span><input type="radio" name="aud" id="a-med" value="med"><label for="a-med">REASOBI LAB<small>医療AI・医療者向け</small></label></span>
+        </div>
+        <label class="field" for="c-kind">ご相談の内容<select id="c-kind" name="相談内容"></select></label>
+        <label class="field" for="c-org">ご所属（病院・大学・企業名）<input id="c-org" name="所属" required autocomplete="organization"></label>
+        <label class="field" for="c-name">お名前<input id="c-name" name="お名前" required autocomplete="name"></label>
+        <label class="field" for="c-mail">メールアドレス<input id="c-mail" name="email" type="email" required autocomplete="email"></label>
+        <label class="field" for="c-msg">詳細<textarea id="c-msg" name="詳細"></textarea></label>
+        <label class="hp" aria-hidden="true">この欄は空のままにしてください<input type="text" name="_honey" tabindex="-1" autocomplete="off"></label>
+        <button class="submit" type="submit" id="c-send">送信する</button>
+        <div class="notice" id="c-done" role="status" aria-live="polite" hidden></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="in"><span>© 株式会社リあそび REASOBI Inc.</span><span>身体を動かす。医療を動かす。</span></div>
+</footer>
+
+<script>
+/* ===== Hero particles: できない → できる ===== */
+(() => {
+  const hero = document.querySelector('.hero'), cv = document.getElementById('hero-cv'), ctx = cv.getContext('2d');
+  const area = document.querySelector('.word-area');
+  const capK = document.getElementById('cap-k'), capM = document.getElementById('cap-m');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const PAL = [[255,181,71],[255,107,139],[155,140,255],[92,225,230]];
+  const CAP = {
+    a: ['病室から出られない。体を動かせない。', 'AIを使いこなせない。作りたいものを形にできない。'],
+    b: ['動ける。遊べる。社会に戻れる。', '作れる。効率化できる。新しい医療を生み出せる。']
+  };
+  function grad(t){
+    t = Math.max(0, Math.min(1, t)) * (PAL.length - 1);
+    const i = Math.min(PAL.length - 2, Math.floor(t)), f = t - i, a = PAL[i], b = PAL[i + 1];
+    return 'rgb(' + a.map((v, k) => Math.round(v + (b[k] - v) * f)).join(',') + ')';
+  }
+  function shuffle(a){ for (let i = a.length - 1; i > 0; i--){ const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; }
+
+  let W = 0, H = 0, step = 5, P = [], placed = false, mouse = {x: -1e4, y: -1e4}, visible = true, raf = 0, phase = '', t0 = performance.now();
+
+  function sample(text, cx, cy, size){
+    const o = document.createElement('canvas'); o.width = W; o.height = H;
+    const c = o.getContext('2d');
+    c.fillStyle = '#fff'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.font = `700 ${size}px Murecho, "Hiragino Sans", "Noto Sans JP", sans-serif`;
+    c.fillText(text, cx, cy);
+    const d = c.getImageData(0, 0, W, H).data, pts = [];
+    for (let y = 0; y < H; y += step) for (let x = 0; x < W; x += step) if (d[(y * W + x) * 4 + 3] > 140) pts.push([x, y]);
+    return shuffle(pts);
+  }
+
+  function layout(){
+    const r = hero.getBoundingClientRect(), a = area.getBoundingClientRect();
+    const dpr = Math.min(2, window.devicePixelRatio || 1);
+    W = Math.max(1, Math.round(r.width)); H = Math.max(1, Math.round(r.height));
+    cv.width = W * dpr; cv.height = H * dpr; cv.style.width = W + 'px'; cv.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const cx = W / 2, cy = a.top - r.top + a.height / 2;
+    const size = Math.min(a.height * .78, (W - 32) / 4.15);
+    step = Math.max(3, Math.round(size / 58));
+    const A = sample('できない', cx, cy, size), B = sample('できる', cx, cy, size);
+    if (!A.length || !B.length) return;
+    let minX = Infinity, maxX = -Infinity;
+    B.forEach(p => { if (p[0] < minX) minX = p[0]; if (p[0] > maxX) maxX = p[0]; });
+    const n = Math.min(4200, Math.max(A.length, B.length));
+    while (P.length < n) P.push({x: Math.random() * W, y: Math.random() * H, vx: 0, vy: 0});
+    P.length = n;
+    P.forEach((p, i) => {
+      p.a = A[i % A.length]; p.b = B[i % B.length];
+      p.col = grad((p.b[0] - minX) / Math.max(1, maxX - minX));
+      p.tw = Math.random() * 6.28;
+    });
+    if (!placed || reduce){
+      const key = reduce ? 'b' : 'a';
+      P.forEach(p => { p.x = p[key][0]; p.y = p[key][1]; });
+      placed = true;
+    }
+    ctx.fillStyle = '#060912'; ctx.fillRect(0, 0, W, H);
+    if (reduce) draw('b', performance.now());
+  }
+
+  function setCaption(k){ capK.textContent = CAP[k][0]; capM.textContent = CAP[k][1]; }
+
+  function draw(ph, now){
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = reduce ? '#060912' : 'rgba(6,9,18,.34)';
+    ctx.fillRect(0, 0, W, H);
+    ctx.globalCompositeOperation = 'lighter';
+    const sz = Math.max(1.6, step * .5), k = ph === 'a' || ph === 'b' ? .08 : .014;
+    const toB = ph === 'b' || ph === 'burstA';
+    for (const p of P){
+      const tgt = toB ? p.b : p.a;
+      let tx = tgt[0], ty = tgt[1];
+      if (ph === 'a'){ tx += Math.sin(now / 90 + p.tw) * .8; ty += Math.cos(now / 110 + p.tw) * .8; }
+      const dx = p.x - mouse.x, dy = p.y - mouse.y, d2 = dx * dx + dy * dy;
+      if (d2 < 10000){ const d = Math.sqrt(d2) || 1, f = (10000 - d2) / 10000 * 3; p.vx += dx / d * f; p.vy += dy / d * f; }
+      if (!reduce){
+        p.vx += (tx - p.x) * k; p.vy += (ty - p.y) * k;
+        p.vx *= .8; p.vy *= .8; p.x += p.vx; p.y += p.vy;
+      }
+      if (toB){
+        ctx.fillStyle = p.col;
+        ctx.globalAlpha = .75 + .25 * Math.sin(now / 400 + p.tw);
+      } else {
+        ctx.fillStyle = '#5B6684';
+        ctx.globalAlpha = .7;
+      }
+      ctx.fillRect(p.x, p.y, sz, sz);
+    }
+    ctx.globalAlpha = 1;
+  }
+
+  function frame(now){
+    raf = 0;
+    if (!visible || reduce) return;
+    const CY = 8200, t = (now - t0) % CY;
+    const ph = t < 2200 ? 'a' : t < 2900 ? 'burstA' : t < 7500 ? 'b' : 'burstB';
+    if (ph !== phase){
+      if (ph.startsWith('burst')) P.forEach(p => { const g = Math.random() * 6.283, s = 6 + Math.random() * 14; p.vx += Math.cos(g) * s; p.vy += Math.sin(g) * s; });
+      if (ph === 'burstA') setCaption('b');
+      if (ph === 'burstB') setCaption('a');
+      phase = ph;
+    }
+    draw(ph, now);
+    raf = requestAnimationFrame(frame);
+  }
+  function start(){ if (!raf && !reduce) raf = requestAnimationFrame(frame); }
+
+  hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+  hero.addEventListener('pointerleave', () => { mouse.x = mouse.y = -1e4; });
+  new IntersectionObserver(es => { visible = es[0].isIntersecting; if (visible) start(); }).observe(hero);
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(layout, 150); });
+
+  if (reduce) setCaption('b');
+  layout(); start();
+  if (document.fonts && document.fonts.load) document.fonts.load('700 100px Murecho').then(layout).catch(() => {});
+})();
+
+/* ===== Medical AI console demo ===== */
+(() => {
+  const CASES = [
+    { tab: '病状説明',
+      q: '小学3年生の患者さんに、入院して点滴を続ける理由を、こわくない言葉で説明する文章を作ってください。',
+      a: 'いま、からだの中では「げんきにする力」が いっしょうけんめい がんばっています。\n点滴は、その力を おうえんする おくすりや 水分を、すこしずつ からだに とどけるための 道です。\nだから、もうすこしの あいだ 病院で おうえんを つづけようね。\n\n―― 下書きです。医師が内容を確認し、患者さんに合わせて調整してください。' },
+    { tab: '文書作成',
+      q: '次の経過メモ（個人情報は削除済み）から、退院サマリーの下書きを作成してください。',
+      a: '【入院時の状態】\n発熱と食欲低下で入院。\n\n【入院後の経過】\n輸液と治療により解熱し、経口摂取が回復。\n\n【退院時の状態】\n全身状態良好。日常生活動作は自立。\n\n【今後の方針】\n外来で経過観察。\n\n―― 下書きです。記載内容は必ず担当医が確認・修正してください。' },
+    { tab: '研究',
+      q: '小児の長期入院と運動機能の低下について、研究テーマの案を3つ出してください。',
+      a: '1. 長期入院児における病室内運動プログラムの実施可能性\n2. VR体験が入院中の身体活動量に与える影響\n3. 退院後の学校復帰までの運動機能の推移\n\n―― テーマの案です。先行研究は必ず原著論文で確認してください。' },
+    { tab: '教育',
+      q: '医学生向けに、小児の脱水の重症度評価を練習する症例クイズを1問作ってください。',
+      a: '【症例】2歳男児。1日前から嘔吐と下痢。\n活気低下、口腔粘膜の乾燥、毛細血管再充満時間の延長を認める。\n\nQ. 脱水の重症度評価で、さらに確認すべき所見を3つ挙げてください。\n\n―― 解答と解説は、指導医が監修して配布します。' }
+  ];
+  const tabs = document.getElementById('ctabs'), body = document.getElementById('cbody');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let timer = 0, cur = -1, auto = 0, userPicked = false;
+
+  tabs.innerHTML = CASES.map((c, i) => `<button role="tab" aria-selected="false" data-i="${i}">${c.tab}</button>`).join('');
+  tabs.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; userPicked = true; clearTimeout(auto); show(+b.dataset.i); });
+
+  function show(i){
+    cur = i; clearInterval(timer);
+    tabs.querySelectorAll('button').forEach((b, j) => b.setAttribute('aria-selected', String(j === i)));
+    const c = CASES[i];
+    body.innerHTML = `<div class="msg me"><span class="who">DOCTOR</span><div class="bubble"></div></div>
+      <div class="msg ai"><span class="who">REASOBI LAB AI</span><div class="bubble"><span class="out"></span><span class="caret"></span></div></div>`;
+    body.querySelector('.me .bubble').textContent = c.q;
+    const out = body.querySelector('.out'), caret = body.querySelector('.caret');
+    if (reduce){ out.textContent = c.a; caret.remove(); return; }
+    let n = 0;
+    timer = setInterval(() => {
+      n += 2; out.textContent = c.a.slice(0, n);
+      if (n >= c.a.length){
+        clearInterval(timer); caret.remove();
+        if (!userPicked) auto = setTimeout(() => show((cur + 1) % CASES.length), 4200);
+      }
+    }, 28);
+  }
+  show(0);
+})();
+
+/* ===== Orbit ===== */
+(() => {
+  const gs = [...document.querySelectorAll('#orbit [data-orbit]')];
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function place(now){
+    gs.forEach(g => {
+      const r = +g.dataset.orbit, a = (+g.dataset.a + (reduce ? 0 : now / 1000 * 4 * +g.dataset.speed)) * Math.PI / 180;
+      g.setAttribute('transform', `translate(${(260 + Math.cos(a) * r).toFixed(1)} ${(260 + Math.sin(a) * r).toFixed(1)})`);
+    });
+    if (!reduce) requestAnimationFrame(place);
+  }
+  place(0);
+})();
+
+/* ===== Contact ===== */
+(() => {
+  const KINDS = {
+    kid: ['小児病棟への REASOBI 導入', 'VR・空間型リハビリの試験導入', 'Reasobi One について', '共同研究・寄付・協賛', 'その他'],
+    med: ['医療AI研修・勉強会', '生成AIの導入支援', 'AIツール・院内アプリの開発', '医療AIサービスの共同開発', 'その他']
+  };
+  const sel = document.getElementById('c-kind');
+  function fill(k){ sel.innerHTML = KINDS[k].map(s => `<option>${s}</option>`).join(''); }
+  document.querySelectorAll('input[name="aud"]').forEach(r => r.addEventListener('change', () => fill(r.value)));
+  fill('kid');
+  /* 送信：FormSubmit（https://formsubmit.co）経由で下記アドレスにメールで届く */
+  const TO = 'koheiatarou0127@gmail.com';
+  const form = document.getElementById('contact-form'), btn = document.getElementById('c-send'), out = document.getElementById('c-done');
+  function show(kind, html){ out.className = 'notice ' + kind; out.innerHTML = html; out.hidden = false; }
+  form.addEventListener('submit', async e => {
+    e.preventDefault();
+    if (form.querySelector('[name="_honey"]').value) return;
+    const aud = document.querySelector('input[name="aud"]:checked').value === 'kid' ? 'REASOBI' : 'REASOBI LAB';
+    const data = Object.fromEntries(new FormData(form));
+    delete data.aud; delete data._honey;
+    const payload = Object.assign({ '対象': aud }, data, {
+      _subject: `【リあそび HP】${aud}：${data['相談内容']}（${data['所属']} ${data['お名前']} 様）`,
+      _replyto: data.email, _template: 'table', _captcha: 'false'
+    });
+    btn.disabled = true; btn.textContent = '送信中…';
+    try {
+      const res = await fetch('https://formsubmit.co/ajax/' + TO, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload)
+      });
+      const j = await res.json().catch(() => ({}));
+      if (!res.ok || String(j.success) !== 'true') throw new Error(j.message || 'HTTP ' + res.status);
+      form.reset(); fill('kid');
+      show('ok', '<b>送信しました。</b><span>内容を確認し、ご入力のメールアドレスへご連絡します。</span>');
+    } catch (err) {
+      show('err', '<b>送信できませんでした。入力内容はそのまま残っています。</b><span>時間をおいてもう一度お試しいただくか、下記アドレスへ直接メールでお送りください。</span>'
+        + '<span class="addr"><code>' + TO + '</code><button type="button" id="c-copy">コピー</button></span>');
+      const cp = document.getElementById('c-copy');
+      cp.addEventListener('click', () => {
+        navigator.clipboard.writeText(TO).then(() => { cp.textContent = 'コピーしました'; })
+          .catch(() => { const r = document.createRange(); r.selectNodeContents(out.querySelector('code')); const s = getSelection(); s.removeAllRanges(); s.addRange(r); });
+      });
+    } finally {
+      btn.disabled = false; btn.textContent = '送信する';
+    }
+  });
+})();
+</script>
